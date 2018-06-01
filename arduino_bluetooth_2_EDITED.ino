@@ -7,14 +7,9 @@ const int enB = 5;
 const int in3 = 7;
 const int in4 = 6;
 
-//const int led1 = 12;
-//const int led2 = 13;
-
-
 int Speed;
 int command; 
 int data;
-//SoftwareSerial mySerial(12,13);
 
 void setup() {
   pinMode(enA, OUTPUT);
@@ -23,10 +18,7 @@ void setup() {
   pinMode(enB, OUTPUT);
   pinMode(in3, OUTPUT);
   pinMode(in4, OUTPUT);
-
-  //pinMode(led1, OUTPUT);
-  //pinMode(led2, OUTPUT);
-  //mySerial.begin(9600);  
+ 
   Serial.begin(9600);
   Serial.print("Starting");
 }
@@ -34,10 +26,7 @@ void setup() {
 void loop() {
   if (Serial.available() > 0) {
     char data = Serial.read();
-    //command = mySerial.read();
-    //Serial.print(command);
     Serial.println(data);
-    //Stop(); 
     switch (data) {
       case 'F' : forward(); 
         break;
@@ -56,7 +45,6 @@ void loop() {
 
 void forward() {
   Serial.println("Going forward");
-  //digitalWrite(led1, HIGH);
   analogWrite(enA, 170);
   analogWrite(enB, 170);
   digitalWrite(in1, LOW);
@@ -67,7 +55,6 @@ void forward() {
 
 void back() {
   Serial.println("Going back");
-  //digitalWrite(led2, HIGH);
   analogWrite(enA, 170);
   analogWrite(enB, 170);
   digitalWrite(in1, HIGH);
@@ -108,5 +95,3 @@ void Stop() {
   digitalWrite(in3, LOW);
   digitalWrite(in4, LOW);
 }
-
-
